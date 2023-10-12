@@ -1,0 +1,27 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /ems-thymeleaf
+
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    drive-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ems?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: 723395
+
+  mybatis:
+    mapper-location: classpath:com/example/demo/mapper/*.xml
+    type-aliases-package: com.example.demo.entity
+
+  logging:
+    level:
+      root:
+        info
+      com.thymeleaf: debug
