@@ -1,27 +1,36 @@
 server:
-  port: 8080
+  port: 8081
   servlet:
     context-path: /ems-thymeleaf
 
 spring:
+  servlet:
+    multipart:
+      max-file-size: 120MB
+      max-request-size: 120MB
   thymeleaf:
     cache: false
-    prefix: classpath:/templates/
-    suffix: .html
+    prefix: classpath:/templates/ #配置视图前缀
+    suffix: .html                 #配置视图后缀
 
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    drive-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ems?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ems?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Tokyo
     username: root
     password: 723395
 
-  mybatis:
-    mapper-location: classpath:com/example/demo/mapper/*.xml
-    type-aliases-package: com.example.demo.entity
+  profiles:
+    active: local #激活本地配置生效
 
-  logging:
-    level:
-      root:
-        info
-      com.thymeleaf: debug
+mybatis:
+  mapper-locations: classpath:com/example/demo/mapper/*.xml
+  type-aliases-package: com.example.demo.entity
+
+logging:
+  level:
+    root:
+      info
+    com.thymeleaf: debug
+
+
