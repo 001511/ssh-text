@@ -12,9 +12,9 @@
     </resultMap>
     <select id="getEmployeesWithDepartments" resultMap="employeeDepartmentResultMap">
         SELECT e.employee_id, e.employee_name, e.address,
-               e.sex, d.department as department_name
+               e.sex, d.department_name as department_name
         FROM employee e
-                 left JOIN department d ON e.department = d.id
+                 left JOIN department d ON e.department = d.department_id
     </select>
     <select id="search" parameterType="map" resultMap="employeeDepartmentResultMap">
         SELECT e.employee_id, e.employee_name, e.address,
